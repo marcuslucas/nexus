@@ -1,6 +1,8 @@
-import { useState, useEffect } from 'react';
-import { AppShell } from './layouts/AppShell';
-import { initApiClient } from './hooks/apiClient';
+import { useState, useEffect } from "react";
+import { AppShell } from "./layouts/AppShell";
+import { initApiClient } from "./hooks/apiClient";
+import React from "react";
+import { ThemeProvider } from "./hooks/useTheme";
 
 /**
  * App — root component.
@@ -27,7 +29,9 @@ export function App() {
 
   if (initError) {
     return (
-      <div style={{ padding: '32px', color: '#e05c5c', fontFamily: 'monospace' }}>
+      <div
+        style={{ padding: "32px", color: "#e05c5c", fontFamily: "monospace" }}
+      >
         <strong>Initialization error:</strong> {initError}
       </div>
     );
@@ -38,8 +42,10 @@ export function App() {
   }
 
   return (
-    <AppShell navItems={[]}>
-      {/* Phase 1: empty content area — routes added in Phase 2 */}
-    </AppShell>
+    <ThemeProvider>
+      <AppShell navItems={[]}>
+        {/* Phase 1: empty content area — routes added in Phase 2 */}
+      </AppShell>
+    </ThemeProvider>
   );
 }

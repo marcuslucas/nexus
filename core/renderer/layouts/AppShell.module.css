@@ -10,7 +10,7 @@
 .sidebar {
   width: var(--sidebar-width);
   flex-shrink: 0;
-  background-color: var(--color-bg-secondary);
+  background-color: var(--color-surface);
   border-right: 1px solid var(--color-border);
   display: flex;
   flex-direction: column;
@@ -28,7 +28,7 @@
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-bold);
   letter-spacing: 0.15em;
-  color: var(--color-accent);
+  color: var(--color-primary);
   text-transform: uppercase;
 }
 
@@ -41,7 +41,7 @@
 .navItem {
   display: block;
   padding: var(--space-2) var(--space-4);
-  color: var(--color-text-secondary);
+  color: var(--color-text-muted);
   text-decoration: none;
   font-size: var(--font-size-base);
   border-radius: var(--radius-sm);
@@ -50,15 +50,15 @@
 }
 
 .navItem:hover {
-  background: var(--color-bg-surface);
-  color: var(--color-text-primary);
+  background: var(--color-surface-raised);
+  color: var(--color-text);
 }
 
 .navEmpty {
   display: block;
   padding: var(--space-2) var(--space-4);
   font-size: var(--font-size-sm);
-  color: var(--color-text-secondary);
+  color: var(--color-text-muted);
   font-style: italic;
 }
 
@@ -74,7 +74,7 @@
 .topbar {
   height: var(--topbar-height);
   flex-shrink: 0;
-  background-color: var(--color-bg-primary);
+  background-color: var(--color-header);
   border-bottom: 1px solid var(--color-border);
   display: flex;
   align-items: center;
@@ -84,7 +84,7 @@
 .topbarTitle {
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
-  color: var(--color-text-secondary);
+  color: var(--color-text-muted);
   letter-spacing: 0.05em;
 }
 

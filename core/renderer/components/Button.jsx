@@ -1,3 +1,4 @@
+import React from 'react';
 import styles from './Button.module.css';
 
 export function Button({ children, onClick, variant = 'primary', disabled = false, type = 'button' }) {

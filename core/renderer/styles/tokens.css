@@ -1,4 +1,23 @@
+/* core/renderer/styles/tokens.css */
+
 :root {
+  /* Applied by ThemeProvider at runtime — these are PRISM defaults */
+  --color-header: #e5e5ea;
+  --color-header-raised: #f2f2f7;
+  --color-primary: #007aff;
+  --color-secondary: #3395ff;
+  --color-background: #f2f2f7;
+  --color-surface: #ffffff;
+  --color-surface-raised: #f2f2f7;
+  --color-panel: #ffffff;
+  --color-border: #c6c6c8;
+  --color-text: #1c1c1e;
+  --color-text-muted: #8e8e93;
+  --color-success: #34c759;
+  --color-warning: #ff9500;
+  --color-error: #ff3b30;
+  --color-info: #0050a0;
+
   /* Spacing — 4px base unit */
   --space-1: 4px;
   --space-2: 8px;
@@ -9,6 +28,7 @@
   --space-12: 48px;
 
   /* Typography */
+  --font: Calibri, sans-serif;
   --font-size-sm: 12px;
   --font-size-base: 14px;
   --font-size-md: 16px;
@@ -17,24 +37,16 @@
   --font-weight-normal: 400;
   --font-weight-medium: 500;
   --font-weight-bold: 600;
-  --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
 
-  /* Colors — default dark theme (overridden by product themes) */
-  --color-bg-primary: #1a1a2e;
-  --color-bg-secondary: #16213e;
-  --color-bg-surface: #0f3460;
-  --color-text-primary: #e0e0e0;
-  --color-text-secondary: #999;
-  --color-border: #2a2a4a;
-  --color-accent: #4f8ef7;
-  --color-danger: #e05c5c;
-  --color-success: #5cb85c;
+  /* Shape */
+  --radius-sm: 10px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
 
-  /* Sidebar */
+  /* Layout — structural, not theme-dependent */
   --sidebar-width: 220px;
   --topbar-height: 48px;
 
-  /* Border radius */
-  --radius-sm: 4px;
-  --radius-md: 8px;
+  /* Misc */
+  --scanline-opacity: 0;
 }

@@ -1,4 +1,5 @@
-import styles from './AppShell.module.css';
+import styles from "./AppShell.module.css";
+import React from "react";
 
 /**
  * AppShell — the persistent layout frame.
@@ -29,9 +30,7 @@ export function AppShell({ navItems = [], children }) {
         <header className={styles.topbar}>
           <span className={styles.topbarTitle}>Nexus Platform</span>
         </header>
-        <div className={styles.content}>
-          {children}
-        </div>
+        <div className={styles.content}>{children}</div>
       </div>
     </div>
   );

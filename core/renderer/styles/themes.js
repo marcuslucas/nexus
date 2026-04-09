@@ -1,0 +1,58 @@
+// core/renderer/styles/themes.js
+
+export const THEMES = {
+  prism: {
+    id: "prism",
+    label: "PRISM",
+    desc: "Apple-style system UI — clean surfaces, blue accent",
+    swatches: ["#F2F2F7", "#FFFFFF", "#007AFF", "#1C1C1E"],
+    vars: {
+      "--color-header": "#E5E5EA",
+      "--color-header-raised": "#F2F2F7",
+      "--color-primary": "#007AFF",
+      "--color-secondary": "#3395FF",
+      "--color-background": "#F2F2F7",
+      "--color-surface": "#FFFFFF",
+      "--color-surface-raised": "#F2F2F7",
+      "--color-panel": "#FFFFFF",
+      "--color-border": "#C6C6C8",
+      "--color-text": "#1C1C1E",
+      "--color-text-muted": "#8E8E93",
+      "--color-success": "#34C759",
+      "--color-warning": "#FF9500",
+      "--color-error": "#FF3B30",
+      "--color-info": "#0050A0",
+      "--radius-sm": "10px",
+      "--font": "Calibri, sans-serif",
+      "--scanline-opacity": "0",
+    },
+  },
+  "prism-dark": {
+    id: "prism-dark",
+    label: "PRISM DARK",
+    desc: "iOS dark mode — OLED black, elevated cards, bright blue",
+    swatches: ["#000000", "#1C1C1E", "#0A84FF", "#FFFFFF"],
+    vars: {
+      "--color-header": "#2C2C2E",
+      "--color-header-raised": "#1C1C1E",
+      "--color-primary": "#0A84FF",
+      "--color-secondary": "#409CFF",
+      "--color-background": "#000000",
+      "--color-surface": "#1C1C1E",
+      "--color-surface-raised": "#2C2C2E",
+      "--color-panel": "#1C1C1E",
+      "--color-border": "#3A3A3C",
+      "--color-text": "#FFFFFF",
+      "--color-text-muted": "#8E8E93",
+      "--color-success": "#30D158",
+      "--color-warning": "#FF9F0A",
+      "--color-error": "#FF453A",
+      "--color-info": "#64ACFF",
+      "--radius-sm": "10px",
+      "--font": "Calibri, sans-serif",
+      "--scanline-opacity": "0",
+    },
+  },
+};
+
+export const DEFAULT_THEME = "prism-dark";

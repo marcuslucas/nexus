@@ -10,9 +10,9 @@ html, body, #root {
   height: 100%;
   width: 100%;
   overflow: hidden;
-  background-color: var(--color-bg-primary);
-  color: var(--color-text-primary);
-  font-family: var(--font-family);
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font);
   font-size: var(--font-size-base);
   -webkit-font-smoothing: antialiased;
 }
