@@ -80,16 +80,16 @@ A developer (or Claude Code) can read the docs and understand exactly what to bu
 ---
 
 ## Phase 2 — Module Registry
-**Status:** ⬜ Not started
+**Status:** ✅ Complete (2026-04-09)
 **Goal:** product.json drives what the app contains. Adding a module = editing one file.
 
 ### Deliverables
-- [ ] `products/architect-portfolio/product.json`
-- [ ] `products/sol-business/product.json`
-- [ ] Core reads active product.json at startup
-- [ ] Flask `__init__.py` registers blueprints from manifest
-- [ ] React `App.jsx` builds nav + routes from manifests
-- [ ] A placeholder module to prove the system works end-to-end
+- [x] `products/architect-portfolio/product.json`
+- [x] `products/sol-business/product.json`
+- [x] Core reads active product.json at startup
+- [x] Flask `__init__.py` registers blueprints from manifest
+- [x] React `App.jsx` builds nav + routes from manifests
+- [x] `web-manager` stub module proves the system works end-to-end
 
 ### Exit Criteria
 - Two product configs exist

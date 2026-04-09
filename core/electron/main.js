@@ -11,9 +11,22 @@ const { registerShellIpc } = require('./ipc/shell');
 const FLASK_PORT = parseInt(process.env.FLASK_PORT || '5199', 10);
 const NEXUS_PRODUCT = process.env.NEXUS_PRODUCT || 'unknown';
 
+// Read active module list from product.json so the renderer knows what to show.
+// Falls back to [] if the product config doesn't exist (e.g. NEXUS_PRODUCT=unknown).
+function readActiveModules() {
+  try {
+    const productJson = path.join(__dirname, '..', '..', 'products', NEXUS_PRODUCT, 'product.json');
+    const raw = fs.readFileSync(productJson, 'utf-8');
+    return JSON.parse(raw).modules || [];
+  } catch (_) {
+    return [];
+  }
+}
+
 const config = {
   FLASK_PORT,
   NEXUS_PRODUCT,
+  modules: readActiveModules(),
 };
 
 // ─── State ─────────────────────────────────────────────────────────────────

@@ -1,24 +1,22 @@
 import { useState, useEffect } from "react";
+import { HashRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AppShell } from "./layouts/AppShell";
-import { initApiClient } from "./hooks/apiClient";
-import React from "react";
 import { ThemeProvider } from "./hooks/useTheme";
+import { initApiClient } from "./hooks/apiClient";
+import { MODULE_REGISTRY } from "./moduleRegistry";
+import React from "react";
 
-/**
- * App — root component.
- *
- * Phase 1: initializes apiClient from config, renders AppShell with empty nav.
- * Phase 2+: reads module manifests from product config, populates navItems and routes.
- */
 export function App() {
   const [ready, setReady] = useState(false);
   const [initError, setInitError] = useState(null);
+  const [activeModuleIds, setActiveModuleIds] = useState([]);
 
   useEffect(() => {
     async function init() {
       try {
         const config = await window.nexus.getConfig();
         initApiClient(config.FLASK_PORT);
+        setActiveModuleIds(config.modules || []);
         setReady(true);
       } catch (err) {
         setInitError(err.message);
@@ -41,11 +39,34 @@ export function App() {
     return null;
   }
 
+  // Collect nav items and routes from active modules in registry order
+  const navItems = [];
+  const routes = [];
+  for (const moduleId of activeModuleIds) {
+    const mod = MODULE_REGISTRY[moduleId];
+    if (mod) {
+      navItems.push(...mod.navItems);
+      routes.push(...mod.routes);
+    }
+  }
+
+  // Default redirect: first route of first active module, or null if none
+  const defaultPath = routes.length > 0 ? routes[0].path : null;
+
   return (
     <ThemeProvider>
-      <AppShell navItems={[]}>
-        {/* Phase 1: empty content area — routes added in Phase 2 */}
-      </AppShell>
+      <HashRouter>
+        <AppShell navItems={navItems}>
+          <Routes>
+            {routes.map(({ path, component: Component }) => (
+              <Route key={path} path={path} element={<Component />} />
+            ))}
+            {defaultPath && (
+              <Route path="/" element={<Navigate to={defaultPath} replace />} />
+            )}
+          </Routes>
+        </AppShell>
+      </HashRouter>
     </ThemeProvider>
   );
 }

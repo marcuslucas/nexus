@@ -93,10 +93,10 @@ nexus/
 
 ## Active Development State
 
-**Current Phase:** `2 — Module Registry`
-**Active Product:** N/A — building platform foundation
-**Last Session:** 2026-04-09 — Phase 1 complete. Built full core platform scaffold: Flask server (config, db, health route, app factory, run.py), Electron main process (zombie-safe Flask spawn with taskkill, health-check polling, loading window, clean quit), preload + IPC handlers, React renderer (AppShell layout, Button/Modal stubs, useApi hook, apiClient, webpack build pipeline). `GET /api/health` returns correct envelope. `npm run build` compiles clean. Flask starts independently via `python core/server/run.py`.
-**Next Priority:** Phase 2 — Module Registry. Create `products/architect-portfolio/product.json` and `products/sol-business/product.json`. Wire `core/server/app/__init__.py` to read product.json and register module blueprints. Wire `core/renderer/App.jsx` to read manifests and assemble nav + routes.
+**Current Phase:** `3 — web-manager Module`
+**Active Product:** `architect-portfolio`
+**Last Session:** 2026-04-09 — Phase 2 complete. product.json drives module loading end-to-end. Flask registers blueprints from manifest via importlib. React assembles nav + routes from active module list (passed through IPC config). web-manager stub scaffolded: manifest, ping route, Dashboard screen, renderer/index.js. HashRouter wired. moduleRegistry.js is the static import boundary. GET /api/web-manager/ping confirmed 200. NEXUS_PRODUCT=unknown and sol-business both boot cleanly with zero modules.
+**Next Priority:** Phase 3 — web-manager module. Replace stub with real schema (projects, images, credits tables), full CRUD routes, and React screens (ProjectList, ProjectEditor, Dashboard).
 
 ---
 
@@ -106,7 +106,7 @@ Modules currently in this repository:
 
 | Module ID | Status | DB Env Key | Description |
 |---|---|---|---|
-| `web-manager` | `planned` | `WEB_MANAGER_DB_PATH` | Website content CRUD + export |
+| `web-manager` | `scaffolded` | `WEB_MANAGER_DB_PATH` | Website content CRUD + export |
 | `sol-quoter` | `planned` | `SOL_QUOTER_DB_PATH` | Solicitation parsing + .docx quote generation |
 | `product-db` | `planned` | `PRODUCT_DB_PATH` | Product/SKU master database |
 

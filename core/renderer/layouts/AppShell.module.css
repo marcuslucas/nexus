@@ -54,6 +54,11 @@
   color: var(--color-text);
 }
 
+.navItemActive {
+  background: var(--color-surface-raised);
+  color: var(--color-text);
+}
+
 .navEmpty {
   display: block;
   padding: var(--space-2) var(--space-4);

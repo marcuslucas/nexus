@@ -1,0 +1,9 @@
+{
+  "id": "architect-portfolio",
+  "name": "Architect Portfolio Manager",
+  "version": "1.0.0",
+  "description": "Portfolio site content management for architecture client",
+  "modules": [
+    "web-manager"
+  ]
+}

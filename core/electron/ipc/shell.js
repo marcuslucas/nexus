@@ -15,6 +15,7 @@ function registerShellIpc(config) {
       FLASK_PORT: config.FLASK_PORT,
       NEXUS_PRODUCT: config.NEXUS_PRODUCT,
       APP_VERSION: app.getVersion(),
+      modules: config.modules,
     };
   });
 }

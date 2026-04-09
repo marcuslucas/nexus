@@ -1,0 +1,10 @@
+{
+  "id": "sol-business",
+  "name": "Sol Business Suite",
+  "version": "1.0.0",
+  "description": "Government solicitation parsing, quoting, and product tracking",
+  "modules": [
+    "sol-quoter",
+    "product-db"
+  ]
+}

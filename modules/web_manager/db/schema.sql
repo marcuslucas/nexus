@@ -1,0 +1,3 @@
+-- web-manager schema
+-- Phase 2: stub only — no tables yet.
+-- Phase 3 will add: projects, images, credits

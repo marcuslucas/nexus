@@ -1,11 +1,12 @@
-import styles from "./AppShell.module.css";
 import React from "react";
+import { NavLink } from "react-router-dom";
+import styles from "./AppShell.module.css";
 
 /**
  * AppShell — the persistent layout frame.
  *
  * Phase 1: renders the sidebar container, topbar, and content slot.
- * Phase 2+: navItems will be populated from module manifests.
+ * Phase 2+: navItems populated from active module manifests via App.jsx.
  */
 export function AppShell({ navItems = [], children }) {
   return (
@@ -19,9 +20,17 @@ export function AppShell({ navItems = [], children }) {
             <span className={styles.navEmpty}>No modules loaded</span>
           )}
           {navItems.map((item) => (
-            <a key={item.id} href={item.path} className={styles.navItem}>
+            <NavLink
+              key={item.id}
+              to={item.path}
+              className={({ isActive }) =>
+                isActive
+                  ? `${styles.navItem} ${styles.navItemActive}`
+                  : styles.navItem
+              }
+            >
               {item.label}
-            </a>
+            </NavLink>
           ))}
         </nav>
       </aside>

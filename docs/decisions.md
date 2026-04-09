@@ -162,6 +162,56 @@ All business logic lives in modules/[id]/lib/. Flask routes are thin: validate i
 
 ---
 
+## [2026-04-09] — HashRouter for Electron renderer (not BrowserRouter)
+
+**Status:** Accepted
+
+**Context:**
+Electron loads the renderer via `win.loadFile()`, which uses the `file://` protocol. React Router's `BrowserRouter` relies on the HTML5 History API, which does not function under `file://` — navigation silently fails or returns blank screens.
+
+**Decision:**
+Use `HashRouter` from `react-router-dom`. Hash-based routing (`/#/web-manager`) works under any protocol and requires no server-side configuration.
+
+**Consequences:**
+- URLs contain a `#` — acceptable for a desktop app with no sharing or deep-linking requirements
+- No server config needed — correct for a local-only Electron app
+- If Nexus ever gains a web build target, this would need revisiting
+
+---
+
+## [2026-04-09] — moduleRegistry.js as the static module import boundary
+
+**Status:** Accepted
+
+**Context:**
+Webpack resolves all imports at build time. Module renderer code (`navItems`, `routes`, screen components) must be statically imported. A mechanism is needed to associate module IDs with their renderer exports without hardcoding the mapping into App.jsx.
+
+**Decision:**
+`core/renderer/moduleRegistry.js` is the single file that maps module IDs to renderer imports. App.jsx reads the active module list from IPC config and looks each ID up in this registry. Adding a new module = one import line + one registry entry in this file.
+
+**Consequences:**
+- Adding a module requires a code change + rebuild — consistent with the static registry decision from project start
+- App.jsx stays clean — no module-specific logic, only generic assembly
+- The registry is the single source of truth for what modules are known to the renderer
+
+---
+
+## [2026-04-09] — Python package directories use underscores; module IDs use hyphens
+
+**Status:** Accepted
+
+**Context:**
+Module IDs use hyphens (`web-manager`, `sol-quoter`) by convention (URL-safe, readable). Python cannot import from directories with hyphens in their names — `import modules.web-manager` is a syntax error.
+
+**Decision:**
+Physical Python package directories use underscores (`modules/web_manager/`). The module ID (`"web-manager"`) is used only in: `manifest.json` `id` field, API route prefixes (`/api/web-manager/`), nav paths (`/web-manager`), and `product.json` module lists. Core derives the directory name via `module_id.replace('-', '_')`.
+
+**Consequences:**
+- Consistent importable Python paths (`modules.web_manager.server.routes.ping`)
+- The mapping rule (`replace('-', '_')`) must be applied everywhere Core constructs a path from a module ID — currently in `core/server/app/__init__.py` `_load_module()`
+
+---
+
 ## [2026-04-09] — Windows zombie process kill uses taskkill, not process.kill()
 
 **Status:** Accepted

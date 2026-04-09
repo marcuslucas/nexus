@@ -1,0 +1,24 @@
+{
+  "id": "web-manager",
+  "name": "Web Manager",
+  "version": "1.0.0",
+  "description": "Portfolio site content management — projects, images, and export to static JSON",
+  "server": {
+    "blueprints": [
+      "modules.web_manager.server.routes.ping"
+    ],
+    "db_schema": "modules/web_manager/db/schema.sql",
+    "db_env_key": "WEB_MANAGER_DB_PATH"
+  },
+  "renderer": {
+    "entry": "modules/web_manager/renderer/index.js"
+  },
+  "nav": [
+    {
+      "id": "wm-dashboard",
+      "label": "Web Manager",
+      "icon": "layout",
+      "path": "/web-manager"
+    }
+  ]
+}
